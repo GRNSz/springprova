@@ -53,4 +53,7 @@ import java.util.Set;
         System.out.println("O professor adicionado foi: " + professor);
         return professor;
     }
+
+    @PutMapping("/atualizaraluno/{index}")
+
 }
