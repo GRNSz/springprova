@@ -38,10 +38,10 @@ import java.util.Set;
         System.out.println("O aluno adicionado foi: " + aluno);
         return aluno;
     }
-        @GetMapping("/professores")
-        public List<Professor> getProfessores () {
-            return professores;
-        }
+    @GetMapping("/professores")
+    public List<Professor> getProfessores () {
+        return professores;
+    }
 
     @PostMapping("/inserirprof")
     public Professor inserirProfessor(@Valid @RequestBody Professor professor) {
@@ -49,6 +49,7 @@ import java.util.Set;
         if (!validate.isEmpty()) {
             throw new IllegalArgumentException("Erro ao inserir professor: " + validate);
         }
+        professores.add(professor); 
         System.out.println("O professor adicionado foi: " + professor);
         return professor;
     }

@@ -1,24 +1,27 @@
 package com.provaspring.springprova.model;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+// import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.br.CPF;
 
 public class Professor {
 
+    // Adicionando as anotações de validação aos atributos.
     @NotBlank (message = "O nome não pode estar em branco.")
     private String nome;
 
     @CPF(message = "CPF Invalido.")
-    @NotBlank
+    @NotBlank (message = "O CPF não pode estar em branco.")
     private String cpf;
 
-    @NotBlank
+    @NotBlank (message = "A materia não pode estar em branco.")
     private String materia;
 
+    // Construtores (O constrtutor vazio que é necessário para o Spring)
     public Professor(){
     }
 
+    // Construtor com parâmetros
     public Professor(String nome, String cpf, String materia) {
         this.nome = nome;
         this.cpf = cpf;
