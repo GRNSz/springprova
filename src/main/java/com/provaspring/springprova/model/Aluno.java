@@ -4,10 +4,12 @@ import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import org.hibernate.validator.constraints.br.CPF;
 
 public class Aluno {
 
+    @Size(min=3, max=50, message = "O nome deve ter entre 3 e 50 caracteres.")
     @NotBlank(message = "O nome não pode estar em branco.")
     private String nome;
 
@@ -50,5 +52,14 @@ public class Aluno {
 
     public void setIdade(Integer idade){
         this.idade = idade;
+    }
+
+    @Override
+    public String toString() {
+        return "Aluno{" +
+                "nome='" + nome + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", idade=" + idade +
+                '}';
     }
 }

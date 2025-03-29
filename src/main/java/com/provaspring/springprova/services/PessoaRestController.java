@@ -54,6 +54,20 @@ import java.util.Set;
         return professor;
     }
 
+    // Apenas atualiza o aluno se ele for maior de 18 anos.
     @PutMapping("/atualizaraluno/{index}")
+    public Aluno atualizarAluno(@PathVariable int index, @Valid @RequestBody Aluno aluno){
+        if (index < 0 || index >= alunos.size()) {
+            throw new IllegalArgumentException("Índice inválido: " + index);
+        }
+        if (aluno.getIdade() < 18) {
+            throw new IllegalArgumentException("O aluno deve ser maior de 18 anos para ser atualizado.");
+        }
+    }
 
+
+    @GetMapping("/error404")
+    public String error() {
+        return "404 - Not Found";
+    }
 }
